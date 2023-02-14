@@ -1,0 +1,498 @@
+:root {
+    --accent: #c32857;
+    --dark: #831536;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tahoma';
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: #c5335f;
+}
+a:hover {
+    color: #e74a79;
+}
+
+.container {
+    width: 1400px;
+    margin: 0 auto;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 10px;
+}
+.p20v {
+    padding: 20px 0;
+}
+.dark {
+    background-color: var(--dark);
+    color: white;
+}
+
+.caret:before {
+    content: '▾';
+}
+
+.header {
+    width: 100%;
+    height: 100vh;
+}
+.header.minimized {
+    height: 100px;
+}
+
+.header_bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.header_bg .header_bg_video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header_bg .header_bg_overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(150deg,#ffc1dc26,#b73d819e);
+    backdrop-filter: blur(5px);
+}
+
+.header_navbar_outer {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: all .3s;
+    z-index: 10000;
+}
+
+.header_navbar {
+    position: relative;
+    padding: 20px;
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    transition: all .3s;
+}
+
+.header_navbar_outer.sticked {
+    background: var(--accent);
+    border-bottom: 1px solid #ef6790;
+    height: 100px;
+}
+.header_navbar_outer.sticked .header_navbar {
+    border-bottom: none;
+}
+
+.header_navbar .header_logo img {
+    height: 50px;
+}
+
+.header_navbar .header_navigation {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.header_navbar .header_navigation li {
+    position: relative;
+}
+
+.header_navbar .header_navigation a {
+    padding: 15px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.header_navbar .header_navigation li:hover > a {
+    color: var(--accent);
+    background: #fff;
+    transition: all .2s;
+    border-radius: 5px;
+}
+
+.header_navbar .subnav {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    right: 50%;
+    top: calc(100% + 10px);
+    transform: translateX(50%);
+    background: white;
+    list-style-type: none;
+    padding-left: 0;
+    padding: 10px 0;
+    border-radius: 5px;
+    transition: visibility 0s, opacity .2s;
+}
+
+.header_navbar .subnav a {
+    display: block;
+    word-wrap: normal;
+    min-width: 230px;
+    padding: 10px 20px;
+    color: #888;
+    font-size: 14px;
+    text-align: center;
+}
+
+.header_navbar .subnav a:hover {
+    color: var(--accent);
+}
+
+.header_navbar li:hover .subnav {
+    visibility: visible;
+    opacity: 1;
+}
+
+.header_user_profile {
+    position: relative;
+    padding: 15px 0;
+}
+.header_user_profile a {
+    padding: 15px 20px;
+    cursor: pointer;
+    color: white;
+}
+.header_user_profile:hover a {
+    background: white;
+    color: var(--accent);
+    border-radius: 5px;
+}
+.header_user_profile:hover .subnav {
+    visibility: visible;
+    opacity: 1;
+    top: 50%;
+    right: 0;
+    transform: none;
+}
+.header_user_profile:hover .subnav a {
+    min-width: 150px;
+}
+
+.header .wellcoming_outer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.header .wellcoming {
+    text-align: center;
+    color: white;
+}
+
+.header .wellcoming .heading {
+    font-size: 60px;
+    text-shadow: 0 0 50px #000a;
+}
+
+.header .wellcoming .description {
+    font-size: 25px;
+    margin: 30px 0 60px;
+    text-shadow: 0 0 8px #0008;
+}
+
+.header .wellcoming a {
+    padding: 20px 30px;
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 40px;
+    transition: all .3s;
+}
+
+.header .wellcoming a:hover {
+    background: white;
+    color: var(--accent);
+}
+.toggle_navigation {
+    display: none;
+}
+
+.content {
+    padding: 10px 0;
+    min-height: 500px;
+}
+
+.footer {
+    background-color: var(--accent);
+    color: white;
+    padding: 30px;
+    font-size: 14px;
+}
+
+.footer a {
+    color: #ddd;
+    text-decoration: none;
+}
+.footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer .about img {
+    height: 30px;
+}
+
+.footer ul {
+    padding-left: 20px;
+}
+
+@media screen and (max-width: 1450px) {
+    .container {
+        width: 100%;
+    }
+    .footer > .container {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media screen and (min-width: 951px) {
+    .header_navbar .header_navigation {
+        display: flex;
+    }
+    .subnav {
+        border: 1px solid var(--accent);
+        border-top: none;
+    }
+}
+@media screen and (max-width: 950px) {
+    .mainpage {
+        padding: 20px;
+    }
+    .footer > .container {
+        display: block;
+    }
+    .header_navbar {
+        border-bottom: none;
+    }
+    .header .wellcoming {
+        padding: 0 20px;
+    }
+    .header_navigation {
+        display: none;
+    }
+    .header_navigation.showed {
+        display: block;
+        position: fixed;
+        top: 100px;
+        left: 0;
+        height: calc(100vh - 100px);
+        width: 100%;
+        background: white;
+        margin: 0;
+        overflow-x: scroll;
+    }
+    .header_navigation.showed a {
+        color: var(--accent);
+        display: block;
+    }
+    .header_navigation.showed .caret {
+        display: none;
+    }
+    .header_navigation.showed .subnav {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        position: static;
+        transform: none;
+        padding: 0 0 0 20px;
+    }
+    .header_navbar .subnav a {
+        text-align: left;
+    }
+    .toggle_navigation {
+        display: block;
+        color: white;
+        padding: 20px;
+        border: 1px solid white;
+        border-radius: 5px;
+    }
+    .toggle_navigation:hover {
+        color: white;
+    }
+    .header_user_profile {
+        display: none;
+    }
+}
+
+.services {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.service {
+    width: 300px;
+    background: #fefefe;
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    transition: all .3s;
+}
+.service:hover {
+    transform: scale(1.1,1.1);
+}
+.service .image-box {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+.service .image-box img {
+    object-fit: cover;
+    max-width: 100%;
+    min-height: 100%;
+}
+.service .info {
+    padding: 10px;
+}
+.service .info .name {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.service .info .description {
+    font-size: 12px;
+    color: #666;
+    height: 28px;
+    overflow: hidden;
+}
+.service .info .price {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: right;
+    color: #888;
+}
+.service a {
+    display: block;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 15px;
+    padding: 20px;
+}
+
+.page_heading {
+    font-size: 2em;
+    color: white;
+    background-color: var(--dark);
+    padding: 30px;
+    text-align: center;
+}
+
+.loginpage, .regpage {
+    padding-top: 50px;
+}
+
+.loginform, .regform {
+    margin: 0 auto;
+    max-width: 300px;
+}
+
+.loginform input[type="text"], .loginform input[type="password"], .regform input[type="text"], .regform input[type="password"], .regform input[type="date"] {
+    width: 100%;
+    padding: 20px 10px 10px 20px;
+    border: 1px solid var(--accent);
+    border-radius: 30px;
+}
+.loginform input[type="submit"], .regform input[type="submit"] {
+    padding: 15px 25px;
+    border: 1px solid var(--accent);
+    border-radius: 30px;
+    background: #fff;
+    color: var(--accent);
+    transition: all .2s;
+}
+.loginform input[type="submit"]:hover, .regform input[type="submit"]:hover {
+    color: white;
+    background: var(--accent);
+    cursor: pointer;
+}
+
+.loginform .row, .regform .row {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.loginform .row .caption, .regform .row .caption {
+    position: absolute;
+    top: calc(50% - 0.65em);
+    left: 20px;
+    font-size: 15px;
+    color: var(--accent);
+    transition: all .15s;
+}
+
+.loginform .row input:not(:placeholder-shown) + .caption, .loginform .row input:focus + .caption, .regform .row input:not(:placeholder-shown) + .caption, .regform .row input:focus + .caption, .regform .row .caption.static {
+    top: 5px;
+    left: 20px;
+    font-size: 12px;
+}
+
+.loginpage .errorbox, .regpage .errorbox {
+    background: var(--accent);
+    padding: 20px;
+    color: white;
+    margin: 30px auto;
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+.loginpage .errorbox:empty, .regpage .errorbox:empty {
+    display: none;
+}
+
+.loginpage .linktoregister, .regpage .linktologin {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.service-detail {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-gap: 20px;
+}
+
+.service-detail .image {
+    width: 100%;
+    padding-top: 20px;
+}
+.service-detail .image img {
+    width: 100%;
+    box-shadow: -10px 10px 0 var(--accent);
+    transition: all .3s;
+}
+.service-detail .image img:hover {
+    transform: scale(1.1,1.1);
+}
+.service-detail .shortdescription {
+    font-size: 12px;
+    font-style: italic;
+    color: #666;
+}
+.service-detail .cost {
+    font-size: 2em;
+}
+.service-detail .cost .small {
+    font-size: 1rem;
+    color: #888;
+}

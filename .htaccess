@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^([\w\-]+)(/?)$ index.php?act=$1&subact=$2 [QSA,L]
+RewriteRule ^([\w\-]+)/([\w\-]+)(/?)$ index.php?act=$1&subact=$2 [QSA,L]
